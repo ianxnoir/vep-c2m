@@ -1,0 +1,179 @@
+	// ref for addConfig function
+    [
+		{
+			"id": 1,
+			"fieldName": "Time of sending daily reminder",
+			"unit": "TIME",
+			"configValue": "16:30",
+			"lastUpdatedBy": "Peter Kong, PH (ITS)",
+			"lastUpdatedAt": "2022-07-25 04:02:46"
+		},
+		{
+			"id": 2,
+			"fieldName": "No. of day before seminar days",
+			"unit": "DAY",
+			"configValue": "1",
+			"lastUpdatedBy": "esdphdong",
+			"lastUpdatedAt": "2022-07-13 03:05:18"
+		},
+		{
+			"id": 3,
+			"fieldName": "Minutes before sent out seminar reminder",
+			"unit": "MINUTE",
+			"configValue": "30",
+			"lastUpdatedBy": "esdphdong",
+			"lastUpdatedAt": "2022-07-13 03:04:48"
+		},
+		{
+			"id": 4,
+			"fieldName": "Minutes before pop out KOL reminder",
+			"unit": "MINUTE",
+			"configValue": "10",
+			"lastUpdatedBy": "Ricky Yu (ESD) - EXT",
+			"lastUpdatedAt": "2022-04-29 06:33:49"
+		},
+		{
+			"id": 5,
+			"fieldName": "No. of days to send feedback form after seminar",
+			"unit": "DAY",
+			"configValue": "3",
+			"lastUpdatedBy": "jotam",
+			"lastUpdatedAt": "2022-04-19 06:09:01"
+		},
+		{
+			"id": 6,
+			"fieldName": "No. of times of sending feedback form",
+			"unit": "TIME",
+			"configValue": "00:00",
+			"lastUpdatedBy": "jotam",
+			"lastUpdatedAt": "2022-04-19 06:09:26"
+		},
+		{
+			"id": 7,
+			"fieldName": "No. of days to send out daily meeting summary",
+			"unit": "DAY",
+			"configValue": "1",
+			"lastUpdatedBy": "esdphdong",
+			"lastUpdatedAt": "2022-08-08 02:59:26"
+		},
+		{
+			"id": 8,
+			"fieldName": "No. of days before C2M meeting date of sending out meeting summary",
+			"unit": "DAY",
+			"configValue": "1",
+			"lastUpdatedBy": "Ricky Yu (ESD) - EXT",
+			"lastUpdatedAt": "2022-04-29 09:04:40"
+		},
+		{
+			"id": 9,
+			"fieldName": "Time of sending daily meeting summary",
+			"unit": "TIME",
+			"configValue": "09:30",
+			"lastUpdatedBy": "esdphdong",
+			"lastUpdatedAt": "2022-07-14 11:03:06"
+		},
+		{
+			"id": 10,
+			"fieldName": "Time of sending  meeting summary (For C2M meeting start date)",
+			"unit": "TIME",
+			"configValue": "00:00",
+			"lastUpdatedBy": "Ricky Yu (ESD) - EXT",
+			"lastUpdatedAt": "2022-04-29 09:04:27"
+		},
+		{
+			"id": 11,
+			"fieldName": "Minutes before sent out meeting reminder",
+			"unit": "MINUTE",
+			"configValue": "15",
+			"lastUpdatedBy": "esdphdong",
+			"lastUpdatedAt": "2022-07-19 04:31:17"
+		},
+		{
+			"id": 12,
+			"fieldName": "Time of sending no response (in Recommended by TDC list) email",
+			"unit": "TIME",
+			"configValue": "15:30",
+			"lastUpdatedBy": "jotam",
+			"lastUpdatedAt": "2022-04-19 06:35:29"
+		},
+		{
+			"id": 13,
+			"fieldName": "No. of days before C2M end day - Config for no response (in Recommended by TDC list) email",
+			"unit": "DAY",
+			"configValue": "1",
+			"lastUpdatedBy": "jotam",
+			"lastUpdatedAt": "2022-04-19 06:35:55"
+		},
+		{
+			"id": 14,
+			"fieldName": "Interval (day) of checking no response (in Recommended by TDC list) email",
+			"unit": "DAY",
+			"configValue": "1",
+			"lastUpdatedBy": "Ricky Yu (ESD) - EXT",
+			"lastUpdatedAt": "2022-05-04 03:39:51"
+		},
+		{
+			"id": 15,
+			"fieldName": "Maximum number of receive no response (in Recommended by TDC list) email",
+			"unit": "NUMBER",
+			"configValue": "4",
+			"lastUpdatedBy": "Ricky Yu (ESD) - EXT",
+			"lastUpdatedAt": "2022-05-04 03:40:51"
+		},
+		{
+			"id": 16,
+			"fieldName": "No. of interest received",
+			"unit": "NUMBER",
+			"configValue": "6",
+			"lastUpdatedBy": "Ricky Yu (ESD) - EXT",
+			"lastUpdatedAt": "2022-05-04 03:40:51"
+		},
+		{
+			"id": 17,
+			"fieldName": "Interval (day) of checking not enough interest (in Recommended by TDC list) email",
+			"unit": "DAY",
+			"configValue": "1",
+			"lastUpdatedBy": "Ricky Yu (ESD) - EXT",
+			"lastUpdatedAt": "2022-05-04 03:40:51"
+		},
+		{
+			"id": 18,
+			"fieldName": "Time of sending not enough interest and not input sourcing item (in Recommended by TDC list) email",
+			"unit": "TIME",
+			"configValue": "15:30",
+			"lastUpdatedBy": "jotam",
+			"lastUpdatedAt": "2022-04-19 06:39:18"
+		},
+		{
+			"id": 19,
+			"fieldName": "No. of days before C2M end day - Config for not enough interest and not input sourcing item (in Recommended by TDC list) email",
+			"unit": "DAY",
+			"configValue": "1",
+			"lastUpdatedBy": "jotam",
+			"lastUpdatedAt": "2022-04-19 06:39:50"
+		},
+		{
+			"id": 20,
+			"fieldName": "Maximum number of receiving mail - not enough interest (in Recommended by TDC list) email",
+			"unit": "NUMBER",
+			"configValue": "4",
+			"lastUpdatedBy": "jotam",
+			"lastUpdatedAt": "2022-04-19 06:40:51"
+		},
+		{
+			"id": 21,
+			"fieldName": "Time of sending reminder when sending first five AI recommendations and inform buyer during C2M period",
+			"unit": "TIME",
+			"configValue": "09:30",
+			"lastUpdatedBy": "jotam",
+			"lastUpdatedAt": "2022-04-19 06:41:40"
+		},
+		{
+			"id": 22,
+			"fieldName": "Interval of sending reminder when sending first five AI recommendations and inform buyer during C2M period",
+			"unit": "DAY",
+			"configValue": "1",
+			"lastUpdatedBy": "Chityu Ho, CY (ITS)",
+			"lastUpdatedAt": "2022-06-28 07:03:59"
+		}
+	]

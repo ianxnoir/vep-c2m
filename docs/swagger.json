@@ -1,0 +1,3560 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "VEP C2M Service API",
+        "description": "VEP C2M Service API",
+        "version": "1.0",
+        "contact": {}
+    },
+    "tags": [
+        {
+            "name": "vep-c2m",
+            "description": ""
+        }
+    ],
+    "servers": [
+        {
+            "url": "",
+            "description": "clouddev"
+        },
+        {
+            "url": "",
+            "description": "sit"
+        },
+        {
+            "url": "",
+            "description": "uat"
+        },
+        {
+            "url": "",
+            "description": "prd"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "GetMeetingsDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "CreateMeetingDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "UpdateMeetingDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "CreateUnavailableTimeslotDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "getAndSetC2MLoginStatus": {
+                "type": "object",
+                "properties": {}
+            },
+            "GetConfigValueByIdDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "int",
+                        "description": "the config id <br/> 1 = NOTIFICATION_SEMINAR_SEMINAR_SUMMARY_REMINDER_TIME <br/>2 = NOTIFICATION_SEMINAR_SEMINAR_SUMMARY_REMINDER_DAY <br/>3 = NOTIFICATION_SEMINAR_ATTENDING_SEMINAR_REMINDER_MINUTE <br/>4 = NOTIFICATION_SEMINAR_KOL_EVENT_REMINDER_MINUTE <br/>5 = NOTIFICATION_SEMINAR_FEEDBACK_FORM_REMINDER_DAY <br/>6 = NOTIFICATION_SEMINAR_FEEDBACK_FORM_REMINDER_TIME <br/>7 = NOTIFICATION_MEETING_DAILY_MEETING_SUMMARY_DAY <br/>8 = NOTIFICATION_MEETING_C2M_START_REMINDER_DAY <br/>9 = NOTIFICATION_MEETING_DAILY_MEETING_SUMMARY_TIME <br/>10 = NOTIFICATION_MEETING_C2M_START_REMINDER_TIME <br/>11 = NOTIFICATION_MEETING_MEETING_REMINDER_MINUTE <br/>12 = NOTIFICATION_MEETING_NO_RESPONSE_REMINDER_TIME <br/>13 = NOTIFICATION_MEETING_NO_RESPONSE_REMINDER_DAY_1 <br/>14 = NOTIFICATION_MEETING_NO_RESPONSE_REMINDER_DAY_2 <br/>15 = NOTIFICATION_MEETING_NO_RESPONSE_REMINDER_NUMBER <br/>16 = NOTIFICATION_MEETING_NOT_ENOUGH_INTEREST_REMINDER_NUMBER_1 <br/>17 = NOTIFICATION_MEETING_NOT_ENOUGH_INTEREST_REMINDER_DAY_1 <br/>18 = NOTIFICATION_MEETING_NOT_ENOUGH_INTEREST_REMINDER_TIME <br/>19 = NOTIFICATION_MEETING_NOT_ENOUGH_INTEREST_REMINDER_DAY_2 <br/>20 = NOTIFICATION_MEETING_NOT_ENOUGH_INTEREST_REMINDER_NUMBER_2 <br/>21 = NOTIFICATION_MEETING_C2M_KICK_OFF_BUYER_TIME <br/>22 = NOTIFICATION_MEETING_C2M_KICK_OFF_BUYER_DAY <br/>",
+                        "example": 1
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "seminarRegistrationDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "ConnectionHandleDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "ConnectionTargetActionDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "ConnectionRenameActionDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "ConnectionConfirmExtendMeetingActionDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "ConnectionActionDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "ConnectionSyncNetworkLevelActionDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "ConnectionSyncConnectionTestingActionDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "DisconnectHandleDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "setFeedbackDtoData": {
+                "type": "object",
+                "properties": {}
+            },
+            "ZOOMLicenseOptionalDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "ZOOMLicenseMustDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "ResetPendingMeetingNotificationStatus": {
+                "type": "object",
+                "properties": {}
+            },
+            "NotiSqsMessageBodyDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "UpdateRecommendationRecordDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "CreateRecommendationRecordDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "UpdateRecommendedByTDCMustDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "CBMPermission": {
+                "type": "object",
+                "properties": {}
+            },
+            "CBMPaginateBuyerDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "CBMPaginateExhibitorDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "CBMPaginateMeetingDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "CBMAutoRefreshMeetingsDtoData": {
+                "type": "object",
+                "properties": {}
+            },
+            "CBMCreatingMeetingDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "SetHiddenRecordDto": {
+                "type": "object",
+                "properties": {}
+            }
+        }
+    },
+    "paths": {
+        "/c2m": {
+            "get": {
+                "operationId": "C2MController_index",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/getMultipleFairDatas/{fairCode}": {
+            "get": {
+                "operationId": "C2MController_getMultipleFairDatas",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/userFairData": {
+            "get": {
+                "operationId": "C2MController_getUserFairData",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/postMeetingFeedbackFormId": {
+            "post": {
+                "operationId": "C2MController_postMeetingFeedbackFormId",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairSetting/{fairCode}": {
+            "get": {
+                "operationId": "C2MController_getFairCodes",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "C2MController_getFairSetting",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/meetings/{id}": {
+            "get": {
+                "operationId": "C2MController_getMeeting",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "operationId": "C2MController_updateMeeting",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateMeetingDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/meetings/{id}/guest": {
+            "get": {
+                "operationId": "C2MController_getMeetingGuest",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/meetingListing": {
+            "post": {
+                "operationId": "C2MController_getMeetings",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetMeetingsDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/meetings": {
+            "post": {
+                "operationId": "C2MController_createMeeting",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateMeetingDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/unavailableTimeslots": {
+            "get": {
+                "operationId": "C2MController_getUnavailableTimeslots",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "C2MController_updateUnavailableTimeslots",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUnavailableTimeslotDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/combinedUnavailableTimeslots": {
+            "get": {
+                "operationId": "C2MController_getCombinedUnavailableTimeslots",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/upcomingMeetingCollide": {
+            "post": {
+                "operationId": "C2MController_checkUpcomingMeetingCollide",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/verifyCollidedSeminars": {
+            "get": {
+                "operationId": "C2MController_verifyCollidedSeminars",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "startTime",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endTime",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/user/consent": {
+            "get": {
+                "operationId": "C2MController_getConsentRecord",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "C2MController_createConsentRecord",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/getAndSetC2MLoginStatus": {
+            "post": {
+                "operationId": "C2MController_getAndSetC2MLoginStatus",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/getAndSetC2MLoginStatus"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/getUserProfileForMeetingCreation": {
+            "post": {
+                "operationId": "C2MController_getUserProfileForMeetingCreation",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/createCalendarEvent/{ssoUid}/{fairCode}": {
+            "get": {
+                "operationId": "C2MController_createiCalendarEvent",
+                "parameters": [
+                    {
+                        "name": "ssoUid",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/getConfigValue": {
+            "post": {
+                "operationId": "C2MController_getConfigValue",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/getConfigValueById": {
+            "post": {
+                "operationId": "C2MController_getConfigValueById",
+                "summary": "Get C2M config value by id",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetConfigValueByIdDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Get C2M config value Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "status": 200,
+                                        "data": {
+                                            "fieldName": "Minutes before sent out seminar reminder",
+                                            "unit": "MINUTE",
+                                            "configValue": "30"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "System error"
+                    }
+                }
+            }
+        },
+        "/c2m/getMeetingById/{meetingId}": {
+            "get": {
+                "operationId": "C2MController_getMeetingById",
+                "parameters": [
+                    {
+                        "name": "meetingId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/getOnlineMeetingStatusById/{meetingId}": {
+            "get": {
+                "operationId": "C2MController_getOnlineMeetingStatusById",
+                "parameters": [
+                    {
+                        "name": "meetingId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fair/{fairCode}/{fiscalYear}/createCIPBuyerTimeslots": {
+            "post": {
+                "operationId": "C2MController_createCIPBuyerTimeslots",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fiscalYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/buyerRegistrationSyncSNS": {
+            "post": {
+                "operationId": "C2MController_buyerRegistrationSyncSNS",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/seminarRegistrationDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/triggerSeminarRegistrationNotification": {
+            "post": {
+                "operationId": "C2MController_triggerSeminarRegistrationNotification",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/applyAllUnavailableTimeslots": {
+            "post": {
+                "operationId": "C2MController_applyAllUnavailableTimeslots",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/countUnavailableTimeslot": {
+            "post": {
+                "operationId": "C2MController_countUnavailableTimeslot",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/countMeetingBetweenTimeslot": {
+            "post": {
+                "operationId": "C2MController_countMeetingBetweenTimeslot",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/getCache": {
+            "post": {
+                "operationId": "C2MController_getCache",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/removeCache": {
+            "post": {
+                "operationId": "C2MController_removeCache",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/getKeysByPattern": {
+            "post": {
+                "operationId": "C2MController_getKeysByPattern",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/addCache": {
+            "post": {
+                "operationId": "C2MController_addCache",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/KickOffMeetingReminder": {
+            "get": {
+                "operationId": "SchedulerController_KickOffMeetingReminder",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/exhibitorLoginReminder": {
+            "get": {
+                "operationId": "SchedulerController_exhibitorLoginReminder",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/buyerLoginReminder": {
+            "get": {
+                "operationId": "SchedulerController_buyerLoginReminder",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/dailyMeetingReminder": {
+            "get": {
+                "operationId": "SchedulerController_dailyMeetingReminder",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/retrySendingMeetingNoti": {
+            "get": {
+                "operationId": "SchedulerController_retrySendingMeetingNoti",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/cancelPendingMeetingsOverHrs": {
+            "get": {
+                "operationId": "SchedulerController_cancelPendingMeetingsOverHrs",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/findUpcomingMeeingsOver15Min": {
+            "get": {
+                "operationId": "SchedulerController_findUpcomingMeeingsOver15Min",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/attendingSeminarReminder": {
+            "get": {
+                "operationId": "SchedulerController_attendingSeminarReminder",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/seminarSummaryReminder": {
+            "get": {
+                "operationId": "SchedulerController_seminarSummaryReminder",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/retrySendingSeminarNoti": {
+            "get": {
+                "operationId": "SchedulerController_retrySendingSeminarNoti",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/retrySendingSeminarSummaryNoti": {
+            "get": {
+                "operationId": "SchedulerController_retrySendingSeminarSummaryNoti",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/noResponseInBmList": {
+            "get": {
+                "operationId": "SchedulerController_noResponseInBmList",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/notEnoughInterestInBmList": {
+            "get": {
+                "operationId": "SchedulerController_notEnoughInterestInBmList",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/retrySendingBMNoti": {
+            "get": {
+                "operationId": "SchedulerController_retrySendingBMNoti",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/askForMeetingsExtension": {
+            "get": {
+                "operationId": "SchedulerController_askForMeetingsExtension",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/killVideoConferenceConnections": {
+            "get": {
+                "operationId": "SchedulerController_killVideoConferenceConnections",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/startVideoConferences": {
+            "get": {
+                "operationId": "SchedulerController_startVideoConferences",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/checkIfMeetingsAreEndingInTenMinutes": {
+            "post": {
+                "operationId": "SchedulerController_checkIfMeetingsAreEndingInTenMinutes",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/checkIfMeetingsAreEndingInFiveMinutes": {
+            "post": {
+                "operationId": "SchedulerController_checkIfMeetingsAreEndingInFiveMinutes",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/stopRtmpBySeminarEndTime": {
+            "get": {
+                "operationId": "SchedulerController_stopRtmpBySeminarEndTime",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/updatePlaybackByExistingVODFile": {
+            "get": {
+                "operationId": "SchedulerController_updatePlaybackByExistingVODFile",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/scheduler/callExhibitorMarketPreferenceView": {
+            "get": {
+                "operationId": "SchedulerController_callExhibitorMarketPreferenceView",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/meetings/{id}/video-conference/guest": {
+            "post": {
+                "operationId": "VideoConferenceController_startVideoConferenceGuest",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/meetings/{id}/video-conference": {
+            "post": {
+                "operationId": "VideoConferenceController_startVideoConference",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "VideoConferenceController_endVideoConfernece",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/getMessageCenterSupportedAllLanguageList": {
+            "get": {
+                "operationId": "VideoConferenceController_getMessageCenterSupportedAllLanguageList",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/getMessageCenterSupportedLanguageList": {
+            "get": {
+                "operationId": "VideoConferenceController_getMessageCenterSupportedLanguageList",
+                "parameters": [
+                    {
+                        "name": "language",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/updateMessageCenterUserPreference": {
+            "post": {
+                "operationId": "VideoConferenceController_updateMessageCenterUserPreference",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/meetings/{id}/video-conference/switch-to-zoom": {
+            "post": {
+                "operationId": "VideoConferenceController_switchToZoom",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/ping": {
+            "post": {
+                "operationId": "VideoConferenceController_wsPingPong",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionHandleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/join": {
+            "post": {
+                "operationId": "VideoConferenceController_wsJoinRoom",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionHandleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/mute": {
+            "post": {
+                "operationId": "VideoConferenceController_wsMutePeople",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionTargetActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/unmute": {
+            "post": {
+                "operationId": "VideoConferenceController_wsUnmutePeople",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionTargetActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/kick": {
+            "post": {
+                "operationId": "VideoConferenceController_wsKickPeople",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionTargetActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/admit": {
+            "post": {
+                "operationId": "VideoConferenceController_wsAdmitPeople",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionTargetActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/reject": {
+            "post": {
+                "operationId": "VideoConferenceController_wsRejectPeople",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionTargetActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/rename": {
+            "post": {
+                "operationId": "VideoConferenceController_wsRename",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionRenameActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/confirm-extend-meeting": {
+            "post": {
+                "operationId": "VideoConferenceController_wsConfirmExtendMeeting",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionConfirmExtendMeetingActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/refuse-extend-meeting": {
+            "post": {
+                "operationId": "VideoConferenceController_wsRefuseExtendMeeting",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/sync-network-level": {
+            "post": {
+                "operationId": "VideoConferenceController_wsSyncNetworkLevel",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionSyncNetworkLevelActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/sync-connection-testing": {
+            "post": {
+                "operationId": "VideoConferenceController_wsSyncConnectionTesting",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionSyncConnectionTestingActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/sync-bad-connection": {
+            "post": {
+                "operationId": "VideoConferenceController_wsSyncBadConnection",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/disconnect": {
+            "post": {
+                "operationId": "VideoConferenceController_wsDisconnect",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DisconnectHandleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/video-conference/feedback": {
+            "post": {
+                "operationId": "VideoConferenceController_setFeedbackForm",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/setFeedbackDtoData"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/reuseLicense/getAndActivateSendbirdQuota": {
+            "post": {
+                "operationId": "ReuseLicenseController_getAndActivateSendbirdQuota",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/reuseLicense/deactivateSendbirdLicenseRecord/{meetingId}": {
+            "get": {
+                "operationId": "ReuseLicenseController_deactivateSendbirdLicenseRecord",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/reuseLicense/createZOOMLicenseRecord/{meetingId}": {
+            "post": {
+                "operationId": "ReuseLicenseController_createZOOMLicenseRecord",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ZOOMLicenseOptionalDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/reuseLicense/deleteZOOMLicenseRecordByMeetingId/{meetingId}": {
+            "post": {
+                "operationId": "ReuseLicenseController_deleteZOOMLicenseRecordByMeetingId",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/reuseLicense/getZOOMLicenseRecordByMeetingId/{meetingId}": {
+            "get": {
+                "operationId": "ReuseLicenseController_getZOOMLicenseRecordByMeetingId",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/reuseLicense/getFirstPendingLicense": {
+            "get": {
+                "operationId": "ReuseLicenseController_getFirstPendingLicense",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/reuseLicense/releaseZOOMLicense": {
+            "post": {
+                "operationId": "ReuseLicenseController_releaseZOOMLicense",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ZOOMLicenseMustDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/reuseLicense/updateZOOMEmailAccountStatus": {
+            "post": {
+                "operationId": "ReuseLicenseController_updateZOOMEmailAccountStatus",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/notification/getNotificationRecordByMeetingId/{meetingId}": {
+            "get": {
+                "operationId": "NotificationController_getNotificationRecordByMeetingId",
+                "parameters": [
+                    {
+                        "name": "meetingId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/notification/updateNotificationStatus": {
+            "post": {
+                "operationId": "NotificationController_updateNotificationStatus",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/notification/createNotificationRecord": {
+            "post": {
+                "operationId": "NotificationController_createNotificationRecord",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/notification/getTemplateContent": {
+            "post": {
+                "operationId": "NotificationController_getTemplateContent",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/notification/getMessageBodyForSns": {
+            "post": {
+                "operationId": "NotificationController_getMessageBodyForSns",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/notification/getTemplateContentR2BVersion": {
+            "post": {
+                "operationId": "NotificationController_getTemplateContentR2BVersion",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/notification/checkNotiSentPerUsers": {
+            "post": {
+                "operationId": "NotificationController_checkNotiSentPerUsers",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/notification/notification/fairs/{fairCode}/fiscalYear/{fiscalYear}/recommendations/buyers": {
+            "post": {
+                "operationId": "NotificationController_findRecommendedExhibitor",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fiscalYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/notification/resetPendingMeetingNotificationStatus": {
+            "post": {
+                "operationId": "NotificationController_resetPendingMeetingNotificationStatus",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResetPendingMeetingNotificationStatus"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/notification/mock-send-sns-msg": {
+            "post": {
+                "operationId": "NotificationController_postSnsMessageBody",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NotiSqsMessageBodyDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/tealium/getExhibitorDataByMeetingId": {
+            "post": {
+                "operationId": "TealiumController_getExhibitorDataByMeetingId",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/{id}": {
+            "put": {
+                "operationId": "RecommendationController_updateRecommendationRecord",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateRecommendationRecordDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations": {
+            "get": {
+                "operationId": "RecommendationController_getRecommendationRecords",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "RecommendationController_createRecommendationRecord",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateRecommendationRecordDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/fiscalYear/{fiscalYear}/exhibitors/{companyCcdId}": {
+            "get": {
+                "operationId": "RecommendationController_findRecommendedBuyer",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fiscalYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "companyCcdId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/fiscalYear/{fiscalYear}/buyers": {
+            "get": {
+                "operationId": "RecommendationController_findRecommendedExhibitor",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fiscalYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/admin/fiscalYear/{fiscalYear}/buyers": {
+            "post": {
+                "operationId": "RecommendationController_findRecommendedExhibitorToAdmin",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fiscalYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/es2": {
+            "get": {
+                "operationId": "RecommendationController_searchExhibitorAdmin",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/{fairYear}/showIfBuyerHasBMList": {
+            "get": {
+                "operationId": "RecommendationController_showIfBuyerHasBMList",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/{fairYear}/recommendedByTDC": {
+            "get": {
+                "operationId": "RecommendationController_findRecommendedByTDCRecord",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "language",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNum",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/updateRecommendedByTDCStatus": {
+            "post": {
+                "operationId": "RecommendationController_updateRecommendedByTDCRecordStatus",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateRecommendedByTDCMustDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/{fairYear}/pendingRecommendation": {
+            "get": {
+                "operationId": "RecommendationController_findpendingRecommendationRecord",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "language",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/{fairYear}/totalNumOfTDCRecommend": {
+            "get": {
+                "operationId": "RecommendationController_getTotalNumOfTDCRecommend",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/createRecommendBMList": {
+            "post": {
+                "operationId": "RecommendationController_createRecommendBMList",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/checkDuplicateExhibitors": {
+            "post": {
+                "operationId": "RecommendationController_checkDuplicateExhibitors",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/getBMListManagement": {
+            "post": {
+                "operationId": "RecommendationController_getBMListManagementRecord",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/recommendations/fiscalYear/{fiscalYear}/ssoUid/{ssoUid}/noti": {
+            "get": {
+                "operationId": "RecommendationController_findRecommendedExhibitorForNoti",
+                "parameters": [
+                    {
+                        "name": "ssoUid",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fiscalYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "c2mParticipantStatusId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/healthcheck": {
+            "get": {
+                "operationId": "CBMController_healthcheck",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPermission"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/getVodStatus": {
+            "post": {
+                "operationId": "CBMController_getVodStatus",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/getRtmpStatus": {
+            "post": {
+                "operationId": "CBMController_getRtmpStatus",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/pavilion": {
+            "get": {
+                "operationId": "CBMController_getPavilion",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPermission"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/countryCode": {
+            "get": {
+                "operationId": "CBMController_getCountryCode",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPermission"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/branchOfficeCode": {
+            "get": {
+                "operationId": "CBMController_getBranchOffice",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPermission"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/targetMarketCode": {
+            "get": {
+                "operationId": "CBMController_getTargetMarketCode",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPermission"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/nobCode": {
+            "get": {
+                "operationId": "CBMController_getNobCode",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPermission"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/adminRole": {
+            "get": {
+                "operationId": "CBMController_getFairAccessList",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/adminRoleType": {
+            "get": {
+                "operationId": "CBMController_getAdminRole",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/getLatestUserPermission": {
+            "get": {
+                "operationId": "CBMController_getLatestUserPermission",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/getFiscalYearListFromFairRegistration": {
+            "get": {
+                "operationId": "CBMController_getFiscalYearListFromFairRegistration",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/getAdminUserList": {
+            "get": {
+                "operationId": "CBMController_getAdminUserList",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/getCouncilBranchOfficeList": {
+            "get": {
+                "operationId": "CBMController_getCouncilBranchOfficeList",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/getAgentSrc/fairs/{fairCode}": {
+            "get": {
+                "operationId": "CBMController_getAgentSrc",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/addConfig": {
+            "post": {
+                "operationId": "CBMController_addConfig",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/combinedUnavailableTimeslots": {
+            "get": {
+                "operationId": "CBMController_getCombinedUnavailableTimeslots",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/pendingTimeslots": {
+            "get": {
+                "operationId": "CBMController_getPendingTimeslots",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/{fairYear}/timeslot": {
+            "get": {
+                "operationId": "CBMController_getNearestTimeslotWithMeeting",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/count": {
+            "post": {
+                "operationId": "CBMController_countAcceptedMeetingByIds",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/meeting/{meetingId}": {
+            "get": {
+                "operationId": "CBMController_findSingleMeeting",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "meetingId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/{fairYear}/buyers": {
+            "post": {
+                "operationId": "CBMController_findBuyer",
+                "parameters": [
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPaginateBuyerDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/{fairYear}/buyersV2": {
+            "post": {
+                "operationId": "CBMController_findBuyerV2",
+                "parameters": [
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPaginateBuyerDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/{fairYear}/exhibitors": {
+            "post": {
+                "operationId": "CBMController_findExhibitor",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPaginateExhibitorDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/exhibitorsV2": {
+            "post": {
+                "operationId": "CBMController_findExhibitorV2",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPaginateExhibitorDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/{fairYear}/meetings": {
+            "post": {
+                "operationId": "CBMController_findMeeting",
+                "parameters": [
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMPaginateMeetingDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/{fairYear}/autoRefreshMeetings": {
+            "post": {
+                "operationId": "CBMController_autoRefreshMeetings",
+                "parameters": [
+                    {
+                        "name": "X-USER-TZ",
+                        "required": true,
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMAutoRefreshMeetingsDtoData"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/meetings/create": {
+            "post": {
+                "operationId": "CBMController_createMeeting",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CBMCreatingMeetingDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/meetings/{id}/cancel": {
+            "put": {
+                "operationId": "CBMController_cancelMeeting",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/meetings/{id}/reschedule": {
+            "put": {
+                "operationId": "CBMController_reschedule",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateMeetingDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/createConfigRecord": {
+            "post": {
+                "operationId": "CBMController_createConfigRecord",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/getConfigValue": {
+            "post": {
+                "operationId": "CBMController_getConfigValue",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/updateConfigValue": {
+            "post": {
+                "operationId": "CBMController_updateConfigValue",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/getFairRegistrationId/{ssoUid}": {
+            "get": {
+                "operationId": "CBMController_getFairRegistrationIdBySsoUid",
+                "parameters": [
+                    {
+                        "name": "ssoUid",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/searchExhibitorOptionsList": {
+            "get": {
+                "operationId": "CBMController_getSearchExhibitorOptionsList",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/searchExhibitorPavilionListByFaircode": {
+            "post": {
+                "operationId": "CBMController_searchExhibitorPavilionListByFaircode",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/{fairYear}/getFeedbackForm": {
+            "get": {
+                "operationId": "CBMController_getFeedbackFormIdByFair",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/{fairYear}/createFeedbackForm": {
+            "post": {
+                "operationId": "CBMController_createFeedbackFormIdByFair",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fairYear",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/deleteFeedbackForm": {
+            "post": {
+                "operationId": "CBMController_deleteFeedbackFormIdById",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/meetings/{id}/video-conference": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_startVideoConference",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "CBMVideoConferenceController_endVideoConfernece",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/fairs/{fairCode}/meetings/{id}/video-conference/switch-to-zoom": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_switchToZoom",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/video-conference/join": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_wsJoinRoom",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionHandleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/video-conference/mute": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_wsMutePeople",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionTargetActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/video-conference/unmute": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_wsUnmutePeople",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionTargetActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/video-conference/kick": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_wsKickPeople",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionTargetActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/video-conference/admit": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_wsAdmitPeople",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionTargetActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/video-conference/reject": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_wsRejectPeople",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionTargetActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/video-conference/rename": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_wsRename",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionRenameActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/video-conference/confirm-extend-meeting": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_wsConfirmExtendMeeting",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConnectionActionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/cbm/video-conference/disconnect": {
+            "post": {
+                "operationId": "CBMVideoConferenceController_wsDisconnect",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DisconnectHandleDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/hidden-records": {
+            "get": {
+                "operationId": "HiddenRecordController_getHiddenRecords",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "HiddenRecordController_setHiddenRecord",
+                "parameters": [
+                    {
+                        "name": "fairCode",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetHiddenRecordDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/c2m/fairs/{fairCode}/hidden-records/{userId}/not-interested": {
+            "get": {
+                "operationId": "HiddenRecordController_getNotInterestedByFairList",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/chatroom/checkSensitiveWord": {
+            "post": {
+                "operationId": "ChatroomController_checkSensitiveWord",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/health": {
+            "get": {
+                "operationId": "HealthController_dummy",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    }
+}

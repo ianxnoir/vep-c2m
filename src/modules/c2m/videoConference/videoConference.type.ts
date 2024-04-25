@@ -1,0 +1,67 @@
+import { SYSTEM_MESSAGE_TYPE } from "../meeting/meeting.type";
+
+export enum Role {
+  GUEST = 'GUEST',
+  BM = 'BM',
+  HOST = 'HOST',
+}
+
+export type JwtPayload = {
+  sub: string;
+  meetingId: string;
+  role: Role;
+  name: string;
+  company: string;
+  country?: string;
+  companyRole?: string;
+  // exp: number;
+};
+
+export enum CallBackEvent {
+  JOINED_ROOM = 'JOINED_ROOM',
+  LEFT_ROOM = 'LEFT_ROOM',
+  START_VIDEO_CONFERENCE = 'START_VIDEO_CONFERENCE',
+  REQUEST_TO_JOIN = 'REQUEST_TO_JOIN',
+  ADMITTED_TO_JOIN = 'ADMITTED_TO_JOIN',
+  REJECTED_TO_JOIN = 'REJECTED_TO_JOIN',
+  REJECTED_GUEST = 'REJECTED_GUEST',
+  QUOTA_FULL = 'QUOTA_FULL',
+  MUTED = 'MUTED',
+  UNMUTED = 'UNMUTED',
+  KICKED = 'KICKED',
+  EXTEND_MEETING_WHEN_COLLIDED = 'EXTEND_MEETING_WHEN_COLLIDED',
+  EXTEND_MEETING = 'EXTEND_MEETING',
+  UPDATED_ATTENDEES = 'UPDATED_ATTENDEES',
+  EXTENDED_MEETING = 'EXTENDED_MEETING',
+  SWITCH_TO_ZOOM = 'SWITCH_TO_ZOOM',
+  ENDED_MEETING = 'ENDED_MEETING',
+  PONG = 'PONG',
+  ZOOM_REJECTED = 'ZOOM_REJECTED',
+  MEETING_COUNT_DOWN_10_MIN = 'MEETING_COUNT_DOWN_10_MIN',
+  MEETING_COUNT_DOWN_5_MIN = 'MEETING_COUNT_DOWN_5_MIN',
+  SYNCED_NETWORK_LEVEL = 'SYNCED_NETWORK_LEVEL',
+  SYNCED_CONNECTION_TESTING = 'SYNCED_CONNECTION_TESTING',
+  SYNCED_BAD_CONNECTION = 'SYNCED_BAD_CONNECTION',
+  OTHER_DEVICE_LOGGED_IN = 'OTHER_DEVICE_LOGGED_IN',
+}
+
+export type ConnectionUser = {
+  ssoUid: string;
+  role: Role;
+  company: string;
+};
+
+export const MINUTES = {
+  TEN_MINUTES: 10,
+  FIVE_MINUTES: 5
+}
+
+export enum MeetingEndingIn {
+  TEN_MINUTES = "TEN_MINUTES",
+  FIVE_MINUTES = "FIVE_MINUTES"
+}
+
+export type EndMeetingEvent = {
+  socketEvent: CallBackEvent;
+  sendbirdEvent: SYSTEM_MESSAGE_TYPE
+}
